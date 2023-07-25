@@ -9,7 +9,7 @@ export const uploadFile=async(data)=>{
         return response.data;
 
     }
-    catch(er){
+    catch(error){
         console.error('Error while calling the api',error.message);
     }
 
