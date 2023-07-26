@@ -7,7 +7,7 @@ function App() {
   const fileInputRef=useRef();//useRef provides the virtual DOM to pick the elements of html
 
   const [file,setFile]=useState('');
-
+  const [result,setResult]=useState('');
 
 const logo="https://img.freepik.com/free-vector/transfer-files-concept-landing-page_52683-24770.jpg?w=1060&t=st=1690282902~exp=1690283502~hmac=cc6a98eb0acece78c35f5e34ffefb966e322f28056b3ba19b8a1c4ca0e58b022";
 
@@ -18,7 +18,9 @@ useEffect(()=>{
         data.append("name",file.name);
         data.append("file",file);
 
-        let response=await uploadFile(data);
+        const response=await uploadFile(data);
+        console.log(response);
+        setResult(response.path);
 
       }
 
@@ -43,6 +45,8 @@ const onuploadClick=()=>{
             style={{display:'none'}}
             onChange={(e)=> setFile(e.target.files[0])}
           />
+
+          <a href={result} target="_blank">{result}</a>
       </div>
     </div>
   );
